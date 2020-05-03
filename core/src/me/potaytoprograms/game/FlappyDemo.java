@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import me.potaytoprograms.game.states.GameStateManager;
 import me.potaytoprograms.game.states.MenuState;
+import me.potaytoprograms.game.states.PlayState;
 
 public class FlappyDemo extends ApplicationAdapter
 {
