@@ -16,6 +16,7 @@ public class MenuState extends state
         super(gsm);
         background = new Texture("bg.png");
         playButton = new Texture("playbtn.png");
+        cam.setToOrtho(false, FlappyDemo.WIDTH, FlappyDemo.HIGHT);
     }
 
     @Override
@@ -24,7 +25,6 @@ public class MenuState extends state
         if(Gdx.input.justTouched())
         {
             gsm.set(new PlayState(gsm));
-            dispose();
         }
     }
 
@@ -37,6 +37,7 @@ public class MenuState extends state
     @Override
     public void render(SpriteBatch sb)
     {
+        sb.setProjectionMatrix(cam.combined);
         sb.begin();
         sb.draw(background, 0,0, FlappyDemo.WIDTH, FlappyDemo.HIGHT);
         sb.draw(playButton, (FlappyDemo.WIDTH / 2) - (playButton.getWidth() / 2), (FlappyDemo.HIGHT /2) - (playButton.getHeight() / 2));
@@ -48,5 +49,6 @@ public class MenuState extends state
     {
         background.dispose();
         playButton.dispose();
+        System.out.println("Menu State Disposed");
     }
 }

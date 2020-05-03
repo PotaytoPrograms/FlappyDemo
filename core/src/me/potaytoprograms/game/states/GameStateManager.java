@@ -20,12 +20,12 @@ public class GameStateManager
 
     public void pop()
     {
-        states.pop();
+        states.pop().dispose();
     }
 
     public void set(state state)
     {
-        states.pop();
+        states.pop().dispose();
         states.push(state);
     }
 
