@@ -37,6 +37,7 @@ public class PlayState extends state
         {
            tubes.add(new Tube(i * (TUBE_SPACING + Tube.TUBE_WIDTH)));
         }
+        System.out.println(bird.getBird().getWidth());
     }
 
     @Override
@@ -82,7 +83,7 @@ public class PlayState extends state
         }
         sb.draw(ground, groundOne.x, groundOne.y);
         sb.draw(ground, groundTwo.x, groundTwo.y);
-        sb.draw(bird.getBird(), bird.getPosition().x, bird.getPosition().y);
+        sb.draw(bird.getBirdAnim().getFrame(), bird.getPosition().x, bird.getPosition().y);
         sb.end();
     }
 

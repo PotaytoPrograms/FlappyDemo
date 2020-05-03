@@ -15,8 +15,10 @@ public class Bird
     private Vector3 position;
     private Vector3 velocity;
     private Texture bird;
+    private Texture birdSpriteSheet;
     private Rectangle bounds;
     private GameStateManager gsm;
+    private Animation birdAnim;
 
     public Bird(int x, int y)
     {
@@ -24,7 +26,9 @@ public class Bird
         position = new Vector3(x, y,0);
         velocity = new Vector3(0,0,0);
         bird = new Texture("bird.png");
+        birdSpriteSheet = new Texture("birdanimation.png");
         bounds = new Rectangle(x, y, bird.getWidth(), bird.getHeight());
+        birdAnim = new Animation(birdSpriteSheet, 3, 1);
     }
 
     public void update(float dt)
@@ -35,7 +39,7 @@ public class Bird
         position.add(MOVEMENT_SPEED * dt, velocity.y, 0);
 
         bounds.setPosition(position.x, position.y);
-
+        birdAnim.update(dt);
         velocity.scl(1/dt);
     }
 
@@ -59,5 +63,9 @@ public class Bird
     public void dispose()
     {
         bird.dispose();
+    }
+
+    public Animation getBirdAnim() {
+        return birdAnim;
     }
 }
