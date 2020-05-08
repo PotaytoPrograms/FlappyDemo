@@ -38,4 +38,9 @@ public class GameStateManager
     {
         states.peek().render(sp);
     }
+
+    public void dispose()
+    {
+        states.pop().dispose();
+    }
 }

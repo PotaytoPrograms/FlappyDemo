@@ -1,5 +1,7 @@
 package me.potaytoprograms.game.sprites;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
@@ -19,6 +21,7 @@ public class Bird
     private Rectangle bounds;
     private GameStateManager gsm;
     private Animation birdAnim;
+    private Sound flap;
 
     public Bird(int x, int y)
     {
@@ -29,6 +32,7 @@ public class Bird
         birdSpriteSheet = new Texture("birdanimation.png");
         bounds = new Rectangle(x, y, bird.getWidth(), bird.getHeight());
         birdAnim = new Animation(birdSpriteSheet, 3, 1);
+        flap = Gdx.audio.newSound(Gdx.files.internal("sfx_wing.ogg"));
     }
 
     public void update(float dt)
@@ -54,6 +58,7 @@ public class Bird
     public void jump()
     {
         velocity.y = 250;
+        flap.play(0.5f);
     }
 
     public Rectangle getBounds() {
@@ -63,6 +68,7 @@ public class Bird
     public void dispose()
     {
         bird.dispose();
+        flap.dispose();
     }
 
     public Animation getBirdAnim() {
